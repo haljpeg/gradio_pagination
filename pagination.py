@@ -2,13 +2,26 @@ import pickle as pkl
 import json
 import pdb
 
-def create_html(json_data_python):
+def create_html(json_data_python, style=False):
+
+    if style:
+        tailwind_css = open("tailwind.css", "r").read()
+        head = f"""
+            <style>
+                {tailwind_css}
+            </style>
+        """
+    else:
+        head = f"""
+            <head>
+              <link rel="stylesheet" href="tailwind.css" data-turbo-track="reload" />
+            </head>
+        """
+
     html = f"""
     <!DOCTYPE html>
     <html>
-    <head>
-      <link rel="stylesheet" href="tailwind.css" data-turbo-track="reload" />
-    </head>
+    {head}
 
     <body onload="onLoad()">
       <main id="main_div" class="container mx-auto mt-14 px-5">
