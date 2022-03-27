@@ -22,7 +22,7 @@
 
         <div id="mygallery_div" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div class="text-center mb-4">
-                <p class="mt-1 text-3xl font-extrabold text-gray-900 sm:text-3xl sm:tracking-tight lg:text-5xl">TEST_PAGINATION</p>
+                <p class="mt-1 text-3xl font-extrabold text-gray-900 sm:text-3xl sm:tracking-tight lg:text-5xl">TEST PAGINATION</p>
           </div>
         </div>
       </main>
@@ -35,20 +35,6 @@
 
             function nextPage() {
                 page = page + 1;
-                // delete the existing my gallery and next/prev links
-                var el_p = document.getElementById("buttonsForChangePage");
-                el_p.remove();
-
-                var el = document.getElementById("actualMyGalleryDiv");
-                el.remove();
-
-                console.log("new page number " + page);
-                onLoad();
-                scroll(0,0);
-            }
-
-            function prevPage() {
-                page = page - 1;
                 // delete the existing my gallery and next/prev links
                 var el_p = document.getElementById("buttonsForChangePage");
                 el_p.remove();
@@ -141,34 +127,14 @@
                 buttons_div.id = "buttonsForChangePage";
                 buttons_div.className = "flex justify-center items-center h-screen mb-4";
 
-                if (page == 0) {
-                    var next_button_div = document.createElement("button");
-                    next_button_div.className = "bg-blue-400 hover:bg-blue-600 text-white text-lg font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded text-center";
-                    next_button_div.innerHTML = "Next";
-                    next_button_div.addEventListener('click', function(){
-                        nextPage();
-                    });
-                    buttons_div.appendChild(next_button_div)
 
-                } else {
-                    var prev_button_div = document.createElement("button");
-                    prev_button_div.className = "bg-blue-400 hover:bg-blue-600 text-white text-lg font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded text-center";
-                    prev_button_div.innerHTML = "Prev";
-                    prev_button_div.addEventListener('click', function(){
-                        prevPage();
-                    });
-                    buttons_div.appendChild(prev_button_div)
-
-                    buttons_div.innerHTML += "&emsp;";
-
-                    //var next_button_div = document.createElement("button");
-                    //next_button_div.className = "bg-blue-400 hover:bg-blue-600 text-white text-lg font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded text-center";
-                    //next_button_div.innerHTML = "Next";
-                    //next_button_div.addEventListener('click', function(){
-                    //    nextPage();
-                    //});
-                    //buttons_div.appendChild(next_button_div)
-                }
+                var next_button_div = document.createElement("button");
+                next_button_div.className = "bg-blue-400 hover:bg-blue-600 text-white text-lg font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded text-center";
+                next_button_div.innerHTML = "Next";
+                next_button_div.addEventListener('click', function(){
+                    nextPage();
+                });
+                buttons_div.appendChild(next_button_div)
 
                 main_div.appendChild(buttons_div);
                 console.log("done");
